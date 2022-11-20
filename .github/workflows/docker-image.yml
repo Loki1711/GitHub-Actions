@@ -3,13 +3,14 @@ on:
   push:
     branches: ["main"]
 jobs:
-  assign:
-    name: Build
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: push to dockerhub
-      uses: fylein/docker-release-action@master
-      env:
-        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-        IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
+    - name: Docker Build
+      run: |
+        docker build . -t loki1711/loki_github1.0
+        docker images -a
+    - name: Docker Login
+      run: docker login -U ${{ secret.DOCKER_USERNAME }} -P {{ secret.DOCKER_PASSWORD }}
+    - name: Docker Push
+      run: docker push loki1711/loki_github1.0

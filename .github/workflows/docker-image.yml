@@ -1,0 +1,15 @@
+name: Docker Image CI
+on:
+  push:
+    branches: ["main"]
+jobs:
+  assign:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: push to dockerhub
+      uses: fylein/docker-release-action@master
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        IMAGE_NAME: ${{ secrets.IMAGE_NAME }}

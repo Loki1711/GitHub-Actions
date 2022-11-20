@@ -28,4 +28,4 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: user/app:latest
+        tags: loki1711/loki_github:latest

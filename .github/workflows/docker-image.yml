@@ -28,6 +28,6 @@ jobs:
       env:
         IMAGE_TAG: ${{ github.run_number }}
       run: |
-        docker build ./ -t loki1711/loki_gh:$IMAGE_TAG
+        docker build /home/runner/work/GitHub-Actions_4_Docker/Dockerfile -t loki1711/loki_gh:$IMAGE_TAG
         docker push loki1711/loki_gh:$IMAGE_TAG
 

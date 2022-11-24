@@ -18,16 +18,18 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # - name: Build and push
-    #   uses: docker/build-push-action@v3
-    #   with:
-    #     push: true
-    #     tags: loki1711/loki_github
-
-    - name: Build and Push
+    - name: Build and push
       env:
         IMAGE_TAG: ${{ github.run_number }}
-      run: |
-        docker build /home/runner/work/GitHub-Actions_4_Docker/Dockerfile -t loki1711/loki_gh:$IMAGE_TAG
-        docker push loki1711/loki_gh:$IMAGE_TAG
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: loki1711/loki_github:$IMAGE_TAG
+
+# - name: Build and Push
+#   env:
+#     IMAGE_TAG: ${{ github.run_number }}
+#   run: |
+#     docker build /home/runner/work/GitHub-Actions_4_Docker/Dockerfile -t loki1711/loki_gh:$IMAGE_TAG
+#     docker push loki1711/loki_gh:$IMAGE_TAG
 

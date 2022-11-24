@@ -15,4 +15,4 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: loki1711/loki_github:latest
+        tags: loki1711/loki_github:${{GITHUB_RUN_NUMBER}}

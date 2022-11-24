@@ -25,7 +25,9 @@ jobs:
     #     tags: loki1711/loki_github
 
     - name: Build and Push
+      env:
+        IMAGE_TAG: ${{ github.run_number }}
       run: |
-        docker build . -t loki1711/loki_gh:${{ github_run_number }}
-        docker push loki1711/loki_gh:${{ github_run_number }}
+        docker build . -t loki1711/loki_gh:$IMAGE_TAG
+        docker push loki1711/loki_gh:$IMAGE_TAG
 

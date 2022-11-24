@@ -20,9 +20,7 @@ jobs:
 
     - name: Build and push
       uses: docker/build-push-action@v3
-      env:
-        TAG: ${{ github.run_number }}
       with:
         push: true
-        tags: loki1711/loki_github:$TAG
+        tags: loki1711/loki_github:${{ github.run_number }}
 

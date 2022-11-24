@@ -5,8 +5,6 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    env:
-      NUMBER: ${{ github.run_number }}
     steps:
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
@@ -24,5 +22,5 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: loki1711/loki_github:$NUMBER
+        tags: loki1711/loki_github:${{ github.run_number }}
 
